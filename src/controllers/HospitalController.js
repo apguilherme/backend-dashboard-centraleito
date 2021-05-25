@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Item = require('../models/User');
+const Item = require('../models/Hospital');
 
 exports.getItems = async (req, res, next) => {
     const items = await Item.find();
@@ -14,10 +14,10 @@ exports.getItemById = async (req, res, next) => {
 };
 
 exports.addItem = async (req, res, next) => {
-    const { name, email, password } = req.body; 
-    let item = await Item.findOne({ email });
+    const { name, city, uf, address, num_beds, num_beds_occupied, person_name, person_contact } = req.body; 
+    let item = await Item.findOne({ name });
     if (!item) {
-        item = await Item.create({ name, email, password });
+        item = await Item.create({ name, city, uf, address, num_beds, num_beds_occupied, person_name, person_contact });
     }
     return res.json(item);
 };
