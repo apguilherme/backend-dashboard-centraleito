@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
-const routes = require('./routes/index');
+const routes = require('./routes');
+
+require("dotenv-safe").config();
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
-// database
 const url = "mongodb+srv://centraleito:centraleito@firstcluster.fl9cj.mongodb.net/centraleito?retryWrites=true&w=majority";
 const connectionParams = {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 mongoose.connect(url, connectionParams)
@@ -15,4 +17,6 @@ mongoose.connect(url, connectionParams)
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-app.listen(3333);
+app.listen(3333, () => {
+    console.log("Server listening at port: 3333")
+});
