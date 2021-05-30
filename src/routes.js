@@ -13,7 +13,7 @@ routes.get('/verifyToken', AuthController.verifyToken);
 
 routes.get('/users', verifyJWT, UserController.getItems);
 routes.get('/user/:id', verifyJWT, UserController.getItemById);
-routes.post('/user', verifyJWT, UserController.addItem);
+routes.post('/user', UserController.addItem);
 routes.put('/user', verifyJWT, UserController.updateItem);
 routes.delete('/user', verifyJWT, UserController.deleteItem);
 
