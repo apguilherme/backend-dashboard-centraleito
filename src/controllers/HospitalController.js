@@ -14,10 +14,10 @@ exports.getItemById = async (req, res, next) => {
 };
 
 exports.addItem = async (req, res, next) => {
-    const { name, city, uf, address, num_beds, num_beds_occupied, person_name, person_contact } = req.body; 
+    const { ownerId, name, city, uf, address, num_beds, num_beds_occupied, num_waiting, time_waiting, person_name, person_contact } = req.body; 
     let item = await Item.findOne({ name });
     if (!item) {
-        item = await Item.create({ name, city, uf, address, num_beds, num_beds_occupied, person_name, person_contact });
+        item = await Item.create({ ownerId, name, city, uf, address, num_beds, num_beds_occupied, num_waiting, time_waiting, person_name, person_contact });
     }
     return res.json(item);
 };
