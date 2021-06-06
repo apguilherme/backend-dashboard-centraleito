@@ -6,12 +6,12 @@ const HospitalSchema = new mongoose.Schema({
     city: String,
     uf: String,
     address: String,
-    num_beds: Number,
-    num_beds_occupied: Number,
     num_waiting: Number,
-    time_waiting: Number,
     person_name: String,
     person_contact: String,
+    beds: [
+        {type: mongoose.Schema.Types.ObjectId, ref: "Bed"}
+    ]
 });
 
 module.exports = mongoose.model('Hospital', HospitalSchema);

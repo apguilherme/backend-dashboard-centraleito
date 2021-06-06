@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const routes = require('./routes');
 
 require("dotenv-safe").config();
-const jwt = require('jsonwebtoken');
 
 const app = express();
 
