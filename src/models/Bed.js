@@ -9,7 +9,8 @@ const BedSchema = new mongoose.Schema({
     document: String,
     time_waiting: String,
     contact: String,
-    severity: String
+    severity: String,
+    sex: String,
 });
 
 module.exports = mongoose.model('Bed', BedSchema);

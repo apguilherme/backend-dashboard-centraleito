@@ -8,13 +8,13 @@ exports.getItemById = async (req, res, next) => {
 };
 
 exports.addItem = async (req, res, next) => {
-    const { name, city, uf, age, document, time_waiting, contact, severity } = req.body; 
+    const { name, city, uf, age, document, time_waiting, contact, severity, sex } = req.body; 
     let bed = await Bed.findOne({ document });
     if (!bed) {
         let ownerId = req.tknUserId;
         let hosp = await Hospital.findOne({ ownerId });
         let hospitalId = hosp._id;
-        bed = await Bed.create({ hospitalId, name, city, uf, age, document, time_waiting, contact, severity });
+        bed = await Bed.create({ hospitalId, name, city, uf, age, document, time_waiting, contact, severity, sex });
         await Hospital.findByIdAndUpdate(hospitalId, {$push: {beds: bed._id}}, {useFindAndModify: false});
     }
     return res.json(bed);
