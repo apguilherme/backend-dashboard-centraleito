@@ -1,5 +1,10 @@
 const Item = require('../models/Hospital');
 
+exports.getAllItems = async (req, res, next) => {
+    const items = await Item.find().populate("beds");
+    return res.json(items);
+};
+
 exports.getItems = async (req, res, next) => {
     const items = await Item.find({"ownerId": req.tknUserId}).populate("beds");
     return res.json(items);

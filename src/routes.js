@@ -18,6 +18,7 @@ routes.post('/user', UserController.addItem);
 routes.put('/user', verifyJWT, UserController.updateItem);
 routes.delete('/user', verifyJWT, UserController.deleteItem);
 
+routes.get('/all-hospitals', HospitalController.getAllItems);
 routes.get('/hospitals', verifyJWT, HospitalController.getItems);
 routes.get('/hospital/:id', verifyJWT, HospitalController.getItemById);
 routes.post('/hospital', verifyJWT, HospitalController.addItem);
